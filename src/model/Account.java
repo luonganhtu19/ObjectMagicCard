@@ -1,10 +1,18 @@
 package model;
 
+import controller.IOFileController;
+
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Account {
     private String userName;
     private String passWork;
     private int idAccount;
     private volatile String state;
+    private static List<String> listAccount=new ArrayList<String>();
 
     private Account() {};
 
@@ -37,6 +45,15 @@ public class Account {
     }
     public void setState(String state) {
         this.state = state;
+    }
+
+    private static void getList() throws IOException {
+        String path=ENUM_STATIC.getPath()+ENUM_STATIC.getFileAccount();
+        IOFileController.readerFile(path,listAccount);
+    }
+    public static List<String> getListAccount() throws IOException {
+        getList();
+        return listAccount;
     }
 
     @Override

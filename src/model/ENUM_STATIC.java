@@ -9,6 +9,7 @@ public final class   ENUM_STATIC {
     private final static String path = "dataBase/";
     private final static String fileAccount="ListAccount.csv";
     private final static String COMMA_DELIMITER=",";
+    private final static String NEW_LINE_SEPARATOR="\n";
 
 
     public static Scanner getINPUT() {
@@ -19,6 +20,10 @@ public final class   ENUM_STATIC {
     }
     public static String getFileAccount() {
         return fileAccount;
+    }
+
+    public static String getNewLineSeparator() {
+        return NEW_LINE_SEPARATOR;
     }
 
     public static String getCommaDelimiter() {
