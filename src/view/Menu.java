@@ -1,6 +1,7 @@
 package view;
 
 import controller.AccountController;
+import controller.ConsoleController;
 import model.Account;
 
 import java.io.IOException;
@@ -21,12 +22,25 @@ public class Menu {
          menuPlayer();
      }
     }
-    private static void menuAdmin(){
+    private static void menuAdmin() throws IOException {
         do {
             System.out.println("Menu for Admin");
             System.out.println("1. Create Account");
             System.out.println("2. Delete Account");
             System.out.println("0. Exit");
+
+            int choice= ConsoleController.getInt("Choice: ");
+            switch (choice){
+                case 0:
+                    return;
+                case 1:
+                    AccountController.createAccount();
+                    break;
+                case 2:
+                    break;
+            }
+
+
         }while (true);
     }
     private static void menuPlayer(){
@@ -37,4 +51,5 @@ public class Menu {
             System.out.println("0. Exit");
         }while (true);
     }
+
 }

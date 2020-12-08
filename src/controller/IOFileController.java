@@ -1,5 +1,6 @@
 package controller;
 
+import model.Account;
 import model.ENUM_STATIC;
 
 import java.io.*;
@@ -44,6 +45,19 @@ public class IOFileController {
                 fileWriter.write(ENUM_STATIC.getCommaDelimiter());
             }
         }
+        fileWriter.close();
+    }
+    public static void writeFile(Account account,String path) throws IOException {
+        FileWriter fileWriter= new FileWriter(new File(path),true);
+
+        fileWriter.append(account.getUserName());
+        fileWriter.append(ENUM_STATIC.getCommaDelimiter());
+        fileWriter.append(account.getPassWork());
+        fileWriter.append(ENUM_STATIC.getCommaDelimiter());
+        fileWriter.append(account.getState());
+        fileWriter.append(ENUM_STATIC.getCommaDelimiter());
+        System.out.println(account.getIdAccount());
+        fileWriter.append(account.getIdAccount()+"");
         fileWriter.close();
     }
 }
