@@ -8,7 +8,6 @@ public class ConsoleController {
         String valueInput =ENUM_STATIC.getINPUT().nextLine();
         return valueInput;
     }
-
     public static Integer getInt(String mess){
         int valueNumber=0;
         while (true) {

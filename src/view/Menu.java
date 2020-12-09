@@ -49,13 +49,14 @@ public class Menu {
                     break;
                 case 3:
                     int idAccount_edit= ConsoleController.getInt("Please input idAccount edit");
-                    AccountController.displayAccount(idAccount_edit);
-                    editAccount();
+                    int indexAccount_edit=idAccount_edit*4-1;
+                    AccountController.displayAccount(indexAccount_edit);
+                    editAccount(indexAccount_edit);
                     break;
             }
         }while (true);
     }
-    private static void editAccount() throws IOException {
+    private static void editAccount(int indexIdAccount) throws IOException {
         do {
             System.out.println("Edit account: ");
             System.out.println("1. Edit nameAccount");
@@ -70,14 +71,17 @@ public class Menu {
                     menuAdmin();
                     return;
                 case 1:
-                    String nameAccount=ConsoleController.getString("New  name account");
-                    System.out.println();
+                    AccountController.editNameAccount(indexIdAccount);
+                    DisplayConsole.displayAfterChoice("Success change name account");
                     break;
                 case 2:
-
+                    AccountController.editPasswordAccount(indexIdAccount);
+                    DisplayConsole.displayAfterChoice("Success change password account");
                     break;
                 case 3:
 
+                    AccountController.editSateAccount(indexIdAccount);
+                    DisplayConsole.displayAfterChoice("Success change state account");
                     break;
                 default:
                     System.out.println("please try again choice menu");

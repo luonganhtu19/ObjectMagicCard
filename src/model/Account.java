@@ -1,5 +1,6 @@
 package model;
 
+import controller.AccountController;
 import controller.IOFileController;
 
 import java.io.IOException;
@@ -63,7 +64,9 @@ public class Account {
         getList();
         return listAccount;
     }
-
+    public static void updateListString(){
+        listAccount= AccountController.getListAccount();
+    }
     @Override
     public String toString() {
         return "Account{" +
@@ -71,8 +74,7 @@ public class Account {
                 ", passWord='" + passWord + '\'' +
                 '}';
     }
-    public static String toString(int idAccount){
-        int indexElement=idAccount*4-1;
+    public static String toString(int indexElement){
         return "UserName: " +listAccount.get(indexElement-3)+ "," +
                 "PassWord: " +listAccount.get(indexElement-2)+ "," +
                 "State: "    +listAccount.get(indexElement-1)+ "," +

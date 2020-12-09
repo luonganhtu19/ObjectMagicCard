@@ -22,6 +22,10 @@ public class AccountController {
         }
     }
 
+    public static List<String> getListAccount() {
+        return listAccount;
+    }
+
     private static void checkAccount(String userName, String password) throws IOException {
         for (int i = 0; i < listAccount.size()-1; i = i + 4) {
             String userNameInList = listAccount.get(i);
@@ -36,7 +40,6 @@ public class AccountController {
             }
         }
     };
-
     public static void createAccount() throws IOException {
         int length= listAccount.size();
         boolean checkUserName=false;
@@ -112,11 +115,33 @@ public class AccountController {
         IOFileController.writeFile(path,listAccount);
         DisplayConsole.displayAfterChoice("Delete account success");
     }
-    public static void displayAccount(int idAccount){
-        String account=Account.toString(idAccount);
+    public static void displayAccount(int indexAccount_edit){
+        Account.updateListString();
+        String account=Account.toString(indexAccount_edit);
         DisplayConsole.displayAfterChoice(account," Account edit");
     }
-    private static void nameAccount(int idAccount, String newNameAccount){
-
+    public static void editNameAccount( int indexAccount_edit) throws IOException {
+        String newNameAccount="";
+        boolean checkNewNameAccount=true;
+        do {
+            newNameAccount=ConsoleController.getString("New name account");
+            checkNewNameAccount=checkExistNameAccount(newNameAccount);
+            if (checkNewNameAccount) System.out.println("Name Account is exist, please try again");
+        }while (checkNewNameAccount);
+        listAccount.remove(indexAccount_edit-3);
+        listAccount.add(indexAccount_edit-3,newNameAccount);
+        IOFileController.writeFile(path,listAccount);
+    }
+    public static void editPasswordAccount( int indexAccount_edit) throws IOException {
+        String newPasswordAccount=ConsoleController.getString("New  password account");
+        listAccount.remove(indexAccount_edit-2);
+        listAccount.add(indexAccount_edit-2,newPasswordAccount);
+        IOFileController.writeFile(path,listAccount);
+    }
+    public static void editSateAccount( int indexAccount_edit) throws IOException {
+        String newStateAccount=ConsoleController.getString("New  state account");
+        listAccount.remove(indexAccount_edit-1);
+        listAccount.add(indexAccount_edit-1,newStateAccount);
+        IOFileController.writeFile(path,listAccount);
     }
 }
