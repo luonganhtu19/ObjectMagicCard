@@ -34,7 +34,7 @@ public class IOFileController {
         list.add(positionValue,newValue);
         writeFile(path,list);
     }
-    private static void writeFile(String  path, List<String> list) throws IOException {
+    public static void writeFile(String  path, List<String> list) throws IOException {
         FileWriter fileWriter= new FileWriter(new File(path));
         for (int i = 0; i < list.size(); i++) {
             if (i%4==3){
@@ -52,7 +52,7 @@ public class IOFileController {
 
         fileWriter.append(account.getUserName());
         fileWriter.append(ENUM_STATIC.getCommaDelimiter());
-        fileWriter.append(account.getPassWork());
+        fileWriter.append(account.getPassWord());
         fileWriter.append(ENUM_STATIC.getCommaDelimiter());
         fileWriter.append(account.getState());
         fileWriter.append(ENUM_STATIC.getCommaDelimiter());

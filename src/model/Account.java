@@ -9,15 +9,15 @@ import java.util.List;
 
 public class Account {
     private String userName;
-    private String passWork;
+    private String passWord;
     private int idAccount;
     private volatile String state;
     private static List<String> listAccount = new ArrayList<String>();
 
     public  Account() {};
-    public Account(String userName, String passWork,String state ,String idAccount ) {
+    public Account(String userName, String passWord,String state ,String idAccount ) {
         this.userName = userName;
-        this.passWork = passWork;
+        this.passWord = passWord;
         this.idAccount =Integer.parseInt(idAccount);
         this.state = state;
     };
@@ -30,12 +30,12 @@ public class Account {
         this.userName = userName;
     }
 
-    public String getPassWork() {
-        return passWork;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setPassWork(String passWork) {
-        this.passWork = passWork;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
     public int getIdAccount() {
@@ -68,7 +68,14 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "userName='" + userName + '\'' +
-                ", passWork='" + passWork + '\'' +
+                ", passWord='" + passWord + '\'' +
                 '}';
+    }
+    public static String toString(int idAccount){
+        int indexElement=idAccount*4-1;
+        return "UserName: " +listAccount.get(indexElement-3)+ "," +
+                "PassWord: " +listAccount.get(indexElement-2)+ "," +
+                "State: "    +listAccount.get(indexElement-1)+ "," +
+                "idAccount: "+listAccount.get(indexElement)  + "," ;
     }
 }
